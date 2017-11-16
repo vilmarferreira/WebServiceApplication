@@ -1,9 +1,13 @@
 package com.example.vilmarferreira.webserviceapplication_listacarros;
 
-import android.app.DownloadManager;
+
+import android.app.Activity;
 import android.os.AsyncTask;
 
+
 import com.example.vilmarferreira.webserviceapplication_listacarros.pacote_carro.Carro;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 
 import java.io.IOException;
@@ -24,25 +28,30 @@ public class DownloadConteudo extends AsyncTask<URL,Void, ArrayList>
     @Override
     protected ArrayList<Carro> doInBackground(URL...urls) {
         OkHttpClient client = new OkHttpClient();
+        Gson gson = new Gson();
+        ArrayList<Carro> listaCarros= new ArrayList();
+
         Request request = new Request.Builder().url(urls[0]).build();
 
         try {
             Response response = client.newCall(request).execute();
 
-            String teste= response.body().string();
-            teste+="";
+            String json= response.body().string();
+            listaCarros= gson.fromJson(json,new TypeToken<ArrayList<Carro>>(){}.getType());
 
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return listaCarros;
     }
 
     //Metodo que executa apos a conclusao da Thread
     //Codigo chamado ja na tread principal
     public void onPostExecute(ArrayList<Carro> carros)
     {
+
+
 
     }
 

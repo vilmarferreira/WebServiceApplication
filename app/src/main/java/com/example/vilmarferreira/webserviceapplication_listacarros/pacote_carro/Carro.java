@@ -31,6 +31,8 @@ public class Carro {
     @Expose
     private String longitude;
 
+
+
     public Integer getId() {
         return id;
     }

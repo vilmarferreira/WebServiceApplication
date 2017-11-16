@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.vilmarferreira.webserviceapplication_listacarros.R;
 import com.example.vilmarferreira.webserviceapplication_listacarros.pacote_carro.Carro;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,10 +20,10 @@ import java.util.List;
 
 public class carroAdapter extends BaseAdapter {
 
-    private final List<Carro> carros;
+    private final ArrayList<Carro> carros;
     private  final Activity activity;
 
-    public carroAdapter(List<Carro> carros, Activity activity) {
+    public carroAdapter(ArrayList<Carro> carros, Activity activity) {
         this.carros = carros;
         this.activity=activity;
     }
